@@ -1,27 +1,19 @@
 # mcp-http-proxy
-
 An MCP server that exposes a single `http_get` tool, allowing MCP clients to perform HTTP GET requests to arbitrary URLs and receive the response.
 
 ## Transport
-
 Uses the [Streamable HTTP](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http) MCP transport, listening on port **8000**. The server operates in stateless mode — no session is maintained between requests.
 
 ## Tool
-
 ### `http_get`
-
 Performs an HTTP GET request to the provided URL.
 
 **Input**
-
 | Field | Type   | Description      |
 |-------|--------|------------------|
 | `url` | string | The URL to fetch |
 
-**Output**
-
-A JSON object with the following fields:
-
+**Output (JSON)**  
 | Field        | Type   | Description                        |
 |--------------|--------|------------------------------------|
 | `status`     | number | HTTP response status code          |
@@ -32,17 +24,14 @@ A JSON object with the following fields:
 If the request fails (e.g. DNS error, connection refused), the tool returns an error result with a descriptive message.
 
 ## Requirements
-
 - Node.js 18+
 
 ## Installation
-
 ```bash
 npm install
 ```
 
 ## Usage
-
 **Development** (runs directly with `tsx`, no compile step):
 
 ```bash
@@ -63,7 +52,6 @@ MCP HTTP proxy server listening on http://localhost:8000/mcp
 ```
 
 ## MCP Client Configuration
-
 Point your MCP client at `http://localhost:8000/mcp`. For example, in a Claude Desktop `claude_desktop_config.json`:
 
 ```json
@@ -77,7 +65,6 @@ Point your MCP client at `http://localhost:8000/mcp`. For example, in a Claude D
 ```
 
 ## Project Structure
-
 ```
 mcp-http-proxy/
 ├── src/
@@ -85,15 +72,3 @@ mcp-http-proxy/
 ├── package.json
 └── tsconfig.json
 ```
-
-## Dependencies
-
-| Package | Role |
-|---------|------|
-| `@modelcontextprotocol/sdk` | MCP server and Streamable HTTP transport |
-| `express` | HTTP server |
-| `zod` | Input schema validation |
-
-## License
-
-ISC
